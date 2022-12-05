@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/wwp3pra.css">
+    <!-- <script src="js/jquery-3.6.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(
+            function(){
+                //메뉴 페이지 
+                $("header .wrap nav ul.gnb").hide();
+                $(".menu").click(function(){
+                    $(".menu span:first-child").toggleClass("rotate"); //버튼 
+                    $(".menu span:last-child").toggleClass("rotate2"); //버튼
+                    $(".bottom , #title .wrap hgroup").fadeToggle(); //바탕 글자 삭제 
+                    $("header .wrap nav ul.gnb").slideToggle(500);  //메뉴창 등장
+                });
+
+                //메뉴 스크롤 
+                var aboutp=$("#about").offset().top;
+                var archivep=$("#archive").offset().top;
+                var morep=$("#archive2").offset().top;
+                var contactp=$("#contact").offset().top;
+
+                $(".gnb li:nth-child(1) a").click(function(){
+                    $("html,body").animate({scrollTop:aboutp},2000);
+                    return false;
+                });
+                $(".gnb li:nth-child(2) a").click(function(){
+                    $("html,body").animate({scrollTop:archivep},2500);
+                    return false;
+                });
+                $(".gnb li:nth-child(3) a").click(function(){
+                    $("html,body").animate({scrollTop:morep},3000);
+                    return false;
+                });
+                $(".gnb li:nth-child(4) a").click(function(){
+                    $("html,body").animate({scrollTop:contactp},3500);
+                    return false;
+                });
+
+                //어바웃 글 show
+                $("#about .wrap .txt p:nth-of-type(3)").hide();
+                $("#about .wrap .txt a").click(function(){
+                    $("#about .wrap .txt p:nth-of-type(3)").slideToggle();
+                });
+
+                // 바이오그래피 리스트 
+                $("#about .wrap .list .part ul:nth-child(n+2)").hide();
+                
+                $("#about .wrap .list .biography li:nth-child(1) a").click(function(){
+                    $(this).toggleClass("circle");
+                    $(this).parents().siblings().children().removeClass("circle")
+                    $("#about .wrap .list .part ul:nth-child(n+2)").hide();
+                    $("#about .wrap .list .part ul:nth-child(1)").fadeIn(1000);
+                });
+                
+                $("#about .wrap .list .biography li:nth-child(2) a").click(function(){
+                    $(this).toggleClass("circle");
+                    $(this).parents().siblings().children().removeClass("circle")
+                    $("#about .wrap .list .part ul:not(:nth-child(2))").hide();
+                    $("#about .wrap .list .part ul:nth-child(2)").fadeIn(1000);
+                });
+
+                $("#about .wrap .list .biography li:nth-child(3) a").click(function(){
+                    $(this).toggleClass("circle");
+                    $(this).parents().siblings().children().removeClass("circle")
+                    $("#about .wrap .list .part ul:not(:nth-child(3))").hide();
+                    $("#about .wrap .list .part ul:nth-child(3)").fadeIn(1000);
+                });
+                $("#about .wrap .list .biography li:nth-child(4) a").click(function(){
+                    $(this).toggleClass("circle");
+                    $(this).parents().siblings().children().removeClass("circle")
+                    $("#about .wrap .list .part ul:not(:nth-child(4))").hide();
+                    $("#about .wrap .list .part ul:nth-child(4)").fadeIn(1000);
+                });
+
+                //archive2 섹션 숨기기 
+                $("#archive2").hide();
+                $("#archive .wrap a.more").click(function(){
+                    $("#archive2").fadeToggle();
+                    return false;
+                });
+
+                //archive2 카테고리 분류
+                $("#archive2 .wrap .contents .categorywrap a:nth-child(1)").click(function(){
+                    $(this).addClass("change");
+                    $("#archive2 .wrap .contents .categorywrap a").not(this).removeClass("change");
+                    $("#archive2 .wrap .contents ul li").removeClass("hide");
+                });
+                $("#archive2 .wrap .contents .categorywrap a:contains('web')").click(function(){
+                    $(this).addClass("change");
+                    $("#archive2 .wrap .contents .categorywrap a").not(this).removeClass("change");
+                    $("li:contains('interior'),li:contains('public'),li:contains('etc')").addClass("hide");
+                    $("li").not("li:contains('interior'),li:contains('public'),li:contains('etc')").removeClass("hide");
+                    return false;
+                }); 
+                $("#archive2 .wrap .contents .categorywrap a:nth-child(3)").click(function(){
+                    $(this).addClass("change");
+                    $("#archive2 .wrap .contents .categorywrap a").not(this).removeClass("change");
+                    $("li:contains('web'),li:contains('public'),li:contains('etc')").addClass("hide");
+                    $("li").not("li:contains('web'),li:contains('public'),li:contains('etc')").removeClass("hide");
+                    return false;
+                });
+                $("#archive2 .wrap .contents .categorywrap a:nth-child(4)").click(function(){
+                    $(this).addClass("change");
+                    $("#archive2 .wrap .contents .categorywrap a").not(this).removeClass("change");
+                    $("li:contains('interior'),li:contains('web'),li:contains('etc')").addClass("hide");
+                    $("li").not("li:contains('interior'),li:contains('web'),li:contains('etc')").removeClass("hide");
+                    return false;
+                });
+                $("#archive2 .wrap .contents .categorywrap a:nth-child(5)").click(function(){
+                    $(this).addClass("change");
+                    $("#archive2 .wrap .contents .categorywrap a").not(this).removeClass("change");
+                    $("li:contains('web'),li:contains('interior'),li:contains('public')").addClass("hide");
+                    $("li").not("li:contains('web'),li:contains('interior'),li:contains('public')").removeClass("hide");
+                    return false;
+                });
+
+                // 프로젝트 hover 
+                $("#archive2 .wrap .contents ul li").hover(function(){
+                    $().fadeToggle();
+                });
+                
+            }   
+		);
+        
+    </script>
+    <!-- slick -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.portani').slick({
+                dots: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                speed: 300,
+                autoplay: true,
+                autoplaySpeed: 2000
+            });
+        });
+    </script>
+    <!-- 제목 -->
+    <title>yeah_soul</title>
+</head>
+<body>
+<!-- 상단 -->
+<header>
+    <div class="wrap">
+        <h1 class="logo"><a href="">yeah_soul</a></h1>
+            <nav>
+                <a href="#;" class="menu"><span></span><span></span></a>
+                <ul class="gnb">        
+                    <li class="list"><a>about</a></li>
+                    <li class="list"><a>projects</a></li>
+                    <li class="list"><a>more</a></li>
+                    <li class="list"><a>contact</a></li>
+                </ul>  
+            </nav>
+    </div>
+</header>
+<!-- 타이틀 -->
+<div id="title">
+    <div class="wrap">
+        <hgroup>
+            <h2>yeah_soul</h2>
+            <h2>design portfolio</h2>
+            <h2>2022</h2>
+        </hgroup>
+        <div class="bottom">
+            <p>web<span class="block"></span>and<span class="block"></span>other design</p>
+            <p>2017-2022</p>
+        </div>
+    </div>
+</div>
+<!-- 메인 -->
+<main>
+
+    <!-- 인트로 -->
+    <!-- <section id="intro">
+        <div class="wrap">
+            <span>
+                <p>self-esteem</p>
+                <p>courage</p>
+                <p>love</p>
+                <p>earth peace</p>
+                <p>animal safety</p>
+            </span>
+        </div>
+    </section> -->
+
+    <!-- 간략소개 -->
+    <section id="about">
+        <div class="wrap">
+            <hgroup>
+                <h2 class="h2">about</h2> 
+                <h2 class="h2">me.</h2>
+            </hgroup>
+            <div class="leftimg">
+                <img src="img/selfie.jpg" alt="">
+            </div>
+            <div class="txt"> 
+                <p>about<span class="block"></span>design</p>
+                <p>
+                    수정예정
+                    제주 해녀가 견습해녀에게 한 말이 있습니다. 
+                    “오늘도 욕심내지말고 딱 너의 숨만큼만 바당에 있다 오거라.” 
+                    너의 숨 그 이상을 욕심 내지말라는 이 말이 앞만 보고 달리는 
+                    요즘 젊은이들에게는 어울리지 않을 수 있지만 저는 이 말에 
+                    많은 공감을 했습니다. 항상 높은 곳을 볼 수는 있지만 그 목표를
+                    위해서는 딱 나의 숨만큼 그 숨을 잘 쉬어가며 최대한 활용해 결과를
+                    만들고 더 높은 곳을 가기위해서는 필히 그 과정을 거쳐야한다는
+                    생각이 들었습니다. 
+                </p>
+                <p>
+                    사회초년생으로써 아직 사회를 보는 시야가 좁지만 조금씩 
+                    시야가 넓어지고 있다는 생각이 들었습니다. 
+                    사회에서 만나는 상사들 그리고 프로젝트를 통해 만나는 클라이언트, 
+                    관계자들을 통해 항상 뒤돌아보면 많은 것을 배우고 있다고 느낍니다. 
+                    그리고 그 배움을 양으로 표현하자면 아직 사회초년생인 만큼, 
+                    저의 숨만큼 배우고 있는 중이고 그만큼 얻었다고 생각합니다. 
+                    배워나가고 깨달야할 것이 아직 많이 남아있지만 앞으로 새롭게 만나는
+                    사회에서도 제 열정을 통해 그런 보람과 깨달음을 얻어가고싶습니다. 
+                </p>
+                <a href="#;" class="">more</a>
+            </div>
+            <div class="list">
+                <h2>
+                    <span>education</span>
+                    <span>career</span>
+                    <span>achivement</span>
+                    <span>and</span>
+                    <span>skills</span>
+                </h2>
+                <ul class="biography">
+                    <li><a href="#;">education</a></li>
+                    <li><a href="#;">career</a></li>
+                    <li><a href="#;">achivement</a></li>
+                    <li><a href="#;">skills</a></li>
+                </ul>
+                <div class="part">
+                    <ul class="edu">
+                        <li><span>계명대학교_실내환경디자인학과 전공 / 생태조경학과 부전공 디자인학사졸업</span><span>2017.02</span></li>
+                        <li><span>신성여자고등학교_편입학 졸업</span> <span>2013.02</span></li>
+                        <li><span>SCIENCE HORIZON ACADEMY_교환학생:SOPHOMORE 과정 수료</span><span>2011.04</span></li>
+                    </ul>
+                    <ul class="career">
+                        <li><span>디자인디토어소시에이츠_디자인 설계 파트 주임</span><span>2020.12 - 2022.03</span></li>
+                        <li><span>매스씨앤지_도시재생본부 주임</span><span>2019.09 - 2019.12</span></li>
+                        <li><span>디팩토리_인테리어 디자인 설계 파트 사원</span><span>2017.12 - 2019.03</span></li>  
+                    </ul>
+                    <ul class="achivement">
+                        <li><span>공공디자인전문인력 등록</span><span>2022. 03</span></li>
+                        <li><span>실내건축기사 자격증</span><span>2017. 05</span></li>
+                        <li><span>운전면허증 취득_2종보통</span><span>2016.03</span></li>
+                        <li><span>2015 대구 공공디자인공모전_동상</span><span>2015.10</span></li>
+                        <li><span>2015 구미 공공디자인공모전_입선</span><span>2015.08</span></li>
+                    </ul>
+                    <ul class="skills">
+                        <li><span>HTML5</span><span>-</span></li>
+                        <li><span>CSS3</span><span>-</span></li>
+                        <li><span>JAVASCRIPT</span><span>-</span></li>
+                        <li><span>AUTO CAD</span><span>+ + + + +</span> </li>
+                        <li><span>SKETCH UP / V-RAY</span><span>+ + + + +</span> </li>
+                        <li><span>ADOBE DESIGN TOOL</span><span>+ + + +</span> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 alt1-->
+    <section id="archive">
+        <div class="wrap">
+            <h2>projects</h2>
+            <ul class="web">
+                <li><a href="">LUNABEER</a></li>
+                <li><a href="">LUNABEER<span class="block"></span>PERSONAL RENEWAL</a></li>
+                <li><a href="">HYUNDAI ARCHITECT</a></li>
+                <li><a href="">PERSONAL WORKS</a></li>
+            </ul>
+            <a href="" class="more">more</a>
+        </div>
+    </section>
+
+    <!-- 프로젝트 alt2 -->
+    <section id="archive2">
+        <div class="wrap">
+            <h2 class="h2">
+                <span>all</span>
+                <span>my</span>
+                <span>projects</span>
+            </h2>
+            <div class="contents">
+                <div class="categorywrap">
+                    <a href="#;">all</a>
+                    <a href="#;">web</a>
+                    <a href="#;">interior</a>
+                    <a href="#;">public</a>
+                    <a href="#;">etc</a>
+                </div>
+                <ul>
+                    <li>
+                        <span>web</span>
+                        <h3>LUNABEER</h3>
+                        <div class="p">
+                            <p>루나비어 웹페이지 습작</p>
+                            <p>2022.10.</p>
+                        </div>
+                        <img src="img/lunabeer.png" alt="">
+                    </li>
+                    <li>
+                        <span>web</span>
+                        <h3>HYUNDAI ARCHITECT</h3>
+                        <div class="p">
+                            <p>현대건설 웹페이지 습작</p>
+                            <p>2011.10.</p>
+                        </div>
+                        <img src="img/hyundai archi.png" alt="">
+                    </li>                    
+                    <li>
+                        <span>web</span>
+                        <h3>LUNABEER <span class="block"></span>PERSONAL RENEWAL</h3>
+                        <div class="p">
+                            <p>루나비어 웹페이지 리뉴얼<span class="block"></span>개인작업</p>
+                            <p>2022.11.</p>
+                        </div>
+                        <img src="img/lunabrew_re.png" alt="">
+                    </li>                    
+                    <li>
+                        <span>public</span>
+                        <h3>중구 생활안심디자인 조성 용역</h3>
+                        <div class="p">
+                            <p>등교길 안전 개선 디자인</p>
+                            <p>2021.12</p>
+                        </div>
+                        <img src="img/jg_design.jpg" alt="">
+                    </li>                    
+                    <li>
+                        <span>interior</span>
+                        <h3>만두 프랜차이즈 인테리어 리모델링</h3>
+                        <div class="p">
+                            <p>프랜차이즈 인테리어</p>
+                            <p>2022.02</p>
+                        </div>
+                        <img src="" alt="">
+                    </li>                   
+                    <li>
+                        <span>public</span>
+                        <h3>프로젝트명</h3>
+                        <div class="p">
+                            <p>간략설명</p>
+                            <p>프로젝트 기간</p>
+                        </div>
+                        <img src="" alt="">
+                    </li>                    
+                    <li>
+                        <span>interior</span>
+                        <h3>프로젝트명</h3>
+                        <div class="p">
+                            <p>간략설명</p>
+                            <p>프로젝트 기간</p>
+                        </div>
+                        <img src="" alt="">
+                    </li>                    
+                    <li>
+                        <span>public</span>
+                        <h3>프로젝트명</h3>
+                        <div class="p">
+                            <p>간략설명</p>
+                            <p>프로젝트 기간</p>
+                        </div>
+                        <img src="" alt="">
+                    </li>                    
+                    <li>
+                        <span>public</span>
+                        <h3>프로젝트명</h3>
+                        <div class="p">
+                            <p>간략설명</p>
+                            <p>프로젝트 기간</p>
+                        </div>
+                        <img src="" alt="">
+                    </li>                    
+                    <li>
+                        <span>etc</span>
+                        <h3>싱가포르 답사</h3>
+                        <div class="p">
+                            <p>필름카메라를 활용한 사진작</p>
+                            <p>2022.09</p>
+                        </div>
+                        <img src="" alt="">
+                    </li>
+                    <li>
+                        <span>etc</span>
+                        <h3>인테리어 3D</h3>
+                        <div class="p">
+                            <p>영화 세트장을 토대로 인테리어 3D 구현</p>
+                            <p>2019.07</p>
+                        </div>
+                        <img src="img/3dpractice.png" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- 연락처 -->
+    <section id="contact">
+        <div class="wrap">
+            <h2 class="h2">contact</h2>
+            <p>(me!)</p>
+            <address>
+                <a href=""><span>phone.</span> +82 10 3830 2247</a>
+                <a href=""><span>email.</span> beaupinetree@gmail.com</a>
+            </address>
+            <div class="sns"> 
+                <a href="" class="sns">blog</a>
+                <a href="" class="sns">instagram</a>
+                <a href="" class="sns">facebook</a>
+            </div>
+        </div>
+    </section>
+    <!-- slick -->
+    <section id="port">
+        <div class="wrap">
+            <ul class="portani">
+                <li><img src="https://images.unsplash.com/photo-1670114457075-813535335e13?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" alt=""></li>
+                <li><img src="https://images.unsplash.com/photo-1657299143471-231353519c63?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt=""></li>
+                <li><img src="https://images.unsplash.com/photo-1669940986274-e3a909d20348?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt=""></li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- 하단 -->
+<footer>
+    <div class="wrap">
+        <h1 class="logo"><a href="" class="logo">yeah_soul</a></h1>
+        <p>copyright. 2022. yeah_soul. all rights are deserved.</p>
+        <P>design portfolio</P>
+    </div>
+</footer>
+</body>
+</html>
