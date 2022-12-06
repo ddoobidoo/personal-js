@@ -760,10 +760,14 @@ div#title {
   .hide{
   display: none !important;
   }
-  #archive2 .wrap .contents ul li:hover{
-  display: block;
-  width: 100%;
-  background-color: #000000b3;
+  .show{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#f3f3f3d6;
+    text-align: center;
+    padding: 0;
   }
   #archive2 .wrap .contents ul li>span{
   display: none;
@@ -871,7 +875,7 @@ div#title {
   #port .wrap{
   width: 1200px;
   margin: 0 auto;
-  overflow: hidden;
+  /*! overflow: hidden; */
   }
   #port .wrap .portani{
 
