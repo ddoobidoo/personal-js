@@ -128,13 +128,14 @@
                     $("li:contains('web'),li:contains('interior'),li:contains('public')").addClass("hide");
                     $("li").not("li:contains('web'),li:contains('interior'),li:contains('public')").removeClass("hide");
                     return false;
-                });
+                });  
 
-                // 프로젝트 hover 
-                $("#archive2 .wrap .contents ul li").hover(function(){
-                    $().fadeToggle();
+                //hover
+                $("#archive2 .wrap .contents ul li").hover(function(e){ 
+                    $("#archive2 .wrap .contents ul li:hover").toggleClass("show");
+                },function(e){
+                    $("#archive2 .wrap .contents ul li:hover").removeClass("show");
                 });
-                
             }   
 		);
         
@@ -330,9 +331,9 @@
                     <li>
                         <span>web</span>
                         <h3>HYUNDAI ARCHITECT</h3>
-                        <div class="p">
-                            <p>현대건설 웹페이지 습작</p>
-                            <p>2011.10.</p>
+                        <div class="hover">
+                            <h3>프로젝트명</h3>
+                            <p>프로젝트 디테일 설명</p>
                         </div>
                         <img src="img/hyundai archi.png" alt="">
                     </li>                    
